@@ -11,5 +11,5 @@ app.use('/api', riskRouter);
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-    console.log(`Running  http://locahost:${PORT}`)
+    console.log(`Running  http://localhost:${PORT}`)
 })
