@@ -1,14 +1,40 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { GrLinkUp } from "react-icons/gr";
 
-const UserInputs = () => {
+const UserInputs = ({ onSubmit }) => {
     const [userInput, setUserInput] = useState("");
 
-    return <div className="main-input">
-        <label htmlFor="riskInput" className="heading-2">Enter Your Text :</label>
-        <textarea name="riskInput" id="" cols="30" rows="10"></textarea>
-        <button type="submit" className="button-56">Submit</button>
-    </div>
-}
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        console.log("Submitted:", userInput);
+
+        // You can also do API calls or validation here
+        if (userInput.trim() !== "") {
+            onSubmit(); 
+        }
+    };
+
+    return (
+        <form
+            onSubmit={handleSubmit}
+            className='flex flex-col min-w-[75vw] bg-gradient-to-b to-[#253534] from-0% p-5'
+        >
+            <input
+                className="w-full h-[50px] border-0 border-b border-b-[#ffffff27] bg-transparent text-white px-2 focus:outline-none"
+                type="text"
+                placeholder='Enter Text Here...'
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+            />
+
+            <button
+                type="submit"
+                className='bg-[#01D6C8] w-[40px] h-[40px] flex items-center justify-center mt-4 rounded-full cursor-pointer'
+            >
+                <GrLinkUp />
+            </button>
+        </form>
+    );
+};
 
 export default UserInputs;
