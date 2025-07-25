@@ -6,18 +6,16 @@ const UserInputs = ({ onSubmit }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        console.log("Submitted:", userInput);
-
-        // You can also do API calls or validation here
         if (userInput.trim() !== "") {
-            onSubmit(); 
+            onSubmit(userInput); // send input to parent
+            setUserInput(""); // clear input after submission (optional)
         }
     };
 
     return (
         <form
             onSubmit={handleSubmit}
-            className='flex flex-col min-w-[75vw] bg-gradient-to-b to-[#253534] from-0% p-5'
+            className='flex flex-col  bg-gradient-to-b to-[#253534] from-0% p-5 border-[1px] border-[#ffffff62] rounded-2xl'
         >
             <input
                 className="w-full h-[50px] border-0 border-b border-b-[#ffffff27] bg-transparent text-white px-2 focus:outline-none"
