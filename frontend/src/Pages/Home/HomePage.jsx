@@ -17,7 +17,7 @@ const HomePage = () => {
     const handleSubmit = async (userInput) => {
         setLoading(true);
         try {
-            const response = await axios.post("http://localhost:3003/api/getRiskAnalysis", {
+            const response = await axios.post( `${import.meta.env.VITE_API_BASE_URL}/api/getRiskAnalysis`, {
                 userText: userInput,
             });
 
